@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { edit, trash } from "../../utils/icons";
 
 interface Props {
 	title: string;
@@ -21,7 +22,7 @@ function TaskItem({ title, description, date, isCompleted, id }: Props) {
 				) : (
 					<button className="incomplete">Incomplete</button>
 				)}
-				<div className="edit">{edit}</div>
+				<button className="delete">{trash}</button>
 			</div>
 		</div>
 	);
