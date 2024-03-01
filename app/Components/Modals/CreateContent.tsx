@@ -59,7 +59,7 @@ function CreateContent() {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<h1>Create a TAsk</h1>
+			<h1>Create a Task</h1>
 			<div className="input-control">
 				<label htmlFor="title">Title</label>
 				<input
