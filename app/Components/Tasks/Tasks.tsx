@@ -6,7 +6,7 @@ import styled from "styled-components";
 function Tasks() {
 	const { theme } = useGlobalState();
 
-	return <TaskStyled theme={theme}>Tasks</TaskStyled>;
+	return <TaskStyled theme={theme}>These Tasks</TaskStyled>;
 }
 const TaskStyled = styled.main`
 	padding: 2rem;
