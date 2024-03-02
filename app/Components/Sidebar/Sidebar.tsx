@@ -43,6 +43,7 @@ function Sidebar() {
 					const link = item.link;
 					return (
 						<li
+							key={item.id}
 							className={`nav-item ${
 								pathname === link ? "active" : ""
 							}`}
