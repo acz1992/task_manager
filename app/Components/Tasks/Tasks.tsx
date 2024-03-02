@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import TaskItem from "../Task_Item/Task_Item";
 import { plus } from "../../utils/icons";
+import CreateContent from "../Modals/CreateContent";
 
 interface Props {
 	title: string;
@@ -11,11 +12,13 @@ interface Props {
 }
 
 function Tasks({ title, tasks }: Props) {
-	const { theme } = useGlobalState();
+	const { theme, isLoading } = useGlobalState();
 
 	return (
 		<TaskStyled theme={theme}>
+			{/* <CreateContent /> */}
 			<h1>{title}</h1>
+
 			<div className="tasks grid">
 				{tasks.map((task) => (
 					<TaskItem
