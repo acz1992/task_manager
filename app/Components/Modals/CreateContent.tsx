@@ -1,8 +1,12 @@
 "use client";
 
+import { useGlobalState } from "@/app/context/globalProvider";
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import styled from "styled-components";
+import Button from "../Button/Button";
+import { plus } from "../../utils/icons";
 
 function CreateContent() {
 	const [title, setTitle] = useState("");
@@ -10,6 +14,8 @@ function CreateContent() {
 	const [date, setDate] = useState("");
 	const [completed, setCompleted] = useState(false);
 	const [important, setImportant] = useState(false);
+
+	const { theme } = useGlobalState();
 
 	const handleChange = (name: string) => (e: any) => {
 		switch (name) {
@@ -58,7 +64,7 @@ function CreateContent() {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<CreateContentStyled onSubmit={handleSubmit} theme={theme}>
 			<h1>Create a Task</h1>
 			<div className="input-control">
 				<label htmlFor="title">Title</label>
@@ -112,13 +118,69 @@ function CreateContent() {
 					id="important"
 				/>
 			</div>
-			<div className="submit-btn">
-				<button type="submit">
-					<span>Submit</span>
-				</button>
+			<div className="submit-btn flex justify-end">
+				<Button
+					type="submit"
+					name="Create a Task"
+					icon={plus}
+					padding={"0.8rem 2rem"}
+					borderRad={"0.8rem"}
+					fw={"500"}
+					fs={"1.2rem"}
+					background={"rgb(0, 163, 255)"}
+				/>
 			</div>
-		</form>
+		</CreateContentStyled>
 	);
 }
+
+const CreateContentStyled = styled.form`
+	> h1 {
+		font-size: clamp(1.2rem, 5vw, 1.6rem);
+		font-weight: 600;
+	}
+
+	color: ${(props) => props.theme.colorGrey1};
+
+	.input-control {
+		position: relative;
+		margin: 1.6rem 0;
+		font-weight: 500;
+
+		label {
+			margin-bottom: 0.8rem;
+			display: inline-block;
+			font-size: clamp(0.9rem, 5vw, 1.2rem);
+
+			span {
+				color: ${(props) => props.theme.colorGrey3};
+			}
+		}
+
+		input,
+		textarea {
+			width: 100%;
+			padding: 1rem;
+
+			resize: none;
+			background-color: ${(props) => props.theme.colorGreyDark};
+			color: ${(props) => props.theme.colorGrey2};
+			border-radius: 0.5rem;
+		}
+
+		.submit-btn button {
+			transiiton: all 0.35s ease-in-out;
+			i {
+				color: ${(props) => props.theme.colorGrey0};
+			}
+
+			&:hover {
+				background: ${(props) =>
+					props.theme.colorPrimaryGreen} !important;
+				color: ${(props) => props.theme.colorWhite} !important;
+			}
+		}
+	}
+`;
 
 export default CreateContent;
