@@ -15,7 +15,7 @@ function CreateContent() {
 	const [completed, setCompleted] = useState(false);
 	const [important, setImportant] = useState(false);
 
-	const { theme } = useGlobalState();
+	const { theme, allTasks, closeModal } = useGlobalState();
 
 	const handleChange = (name: string) => (e: any) => {
 		switch (name) {
@@ -56,7 +56,11 @@ function CreateContent() {
 				toast.error(res.data.error);
 			}
 
-			toast.success("Task Created succesfully");
+			if (!res.data.error) {
+				toast.success("Task Created succesfully");
+				allTasks();
+				closeModal();
+			}
 		} catch (error) {
 			toast.error("Something went wrong");
 			console.log(error);
@@ -98,7 +102,7 @@ function CreateContent() {
 					id="date"
 				/>
 			</div>
-			<div className="input-control">
+			<div className="input-control toggler">
 				<label htmlFor="completed">Toggle Completed</label>
 				<input
 					value={completed.toString()}
@@ -108,7 +112,7 @@ function CreateContent() {
 					id="completed"
 				/>
 			</div>
-			<div className="input-control">
+			<div className="input-control toggler">
 				<label htmlFor="important">Toggle Important</label>
 				<input
 					value={important.toString()}
@@ -148,7 +152,7 @@ const CreateContentStyled = styled.form`
 		font-weight: 500;
 
 		label {
-			margin-bottom: 0.8rem;
+			margin-bottom: 0.5rem;
 			display: inline-block;
 			font-size: clamp(0.9rem, 5vw, 1.2rem);
 
@@ -167,18 +171,33 @@ const CreateContentStyled = styled.form`
 			color: ${(props) => props.theme.colorGrey2};
 			border-radius: 0.5rem;
 		}
+	}
 
-		.submit-btn button {
-			transiiton: all 0.35s ease-in-out;
-			i {
-				color: ${(props) => props.theme.colorGrey0};
-			}
+	.submit-btn button {
+		transition: all 0.35s ease-in-out;
 
-			&:hover {
-				background: ${(props) =>
-					props.theme.colorPrimaryGreen} !important;
-				color: ${(props) => props.theme.colorWhite} !important;
-			}
+		i {
+			color: ${(props) => props.theme.colorGrey0};
+		}
+
+		&:hover {
+			background: ${(props) => props.theme.colorPrimaryGreen} !important;
+			color: ${(props) => props.theme.colorWhite} !important;
+		}
+	}
+
+	.toggler {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		cursor: pointer;
+
+		label {
+			flex: 1;
+		}
+		input {
+			width: initial;
 		}
 	}
 `;
