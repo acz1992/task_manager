@@ -1,11 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-04:29:05
-https://www.youtube.com/watch?v=kPKXmEp_wfU&ab_channel=TheCodeDealer
+A responsive Task Manager App that allows me to list and track outstanding tasks, in order to better organise myself
 
 ## Mission
 
-xxxx
+-   While on the move I am aware of all the things I need to do, but once I am in a position to do them, I suddenly forget
+-   Wanted to be able to keep track of these tasks via a mobile app that could also be used in the browser
 
 ## Tools
 
@@ -22,6 +20,10 @@ TypeScript, Next.js 13, Styled Components, Tailwind
 -   **CSS Loaders** - Collection of loader animations
 
 ## To do:
+
+### Edit Task
+
+-   Add PUT method on backend and Edit Modal on frontend that allows user to update task
 
 ### Light and Dark mode
 
