@@ -25,6 +25,10 @@ TypeScript, Next.js 13, Styled Components, Tailwind
 
 -   Add PUT method on backend and Edit Modal on frontend that allows user to update task
 
+### Text overflow
+
+-   Maybe add scroll
+
 ### Light and Dark mode
 
 -   Add light/ dark mode
