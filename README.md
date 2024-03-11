@@ -29,6 +29,12 @@ TypeScript, Next.js 13, Styled Components, Tailwind
 
 -   Maybe add scroll
 
+### Change description to steps
+
+-   Instead of having a description field, have multiple input fields under description property that describe different steps for Task.
+-   Requires investigating **nested documents/ arrays** in MongoDB and how to represent this in DataBAse Schema.
+-   Could also have a toggle method for each step that when clicks, crosses out particular step
+
 ### Light and Dark mode
 
 -   Add light/ dark mode
