@@ -18,6 +18,8 @@ export const GlobalProvider = ({ children }) => {
 
 	const [tasks, setTasks] = useState([]);
 
+	const [editingTaskId, setEditingTaskId] = useState(null);
+
 	const theme = themes[selectedTheme];
 
 	const openModal = () => {
@@ -64,14 +66,18 @@ export const GlobalProvider = ({ children }) => {
 		}
 	};
 
-	const updateTask = async (task) => {
+	const updateTask = async (updatedTask) => {
 		try {
-			const res = await axios.put(`/api/tasks`, task);
+			const res = axios.put("/api/tasks", updatedTask);
 
 			toast.success("Task updated");
+			console.log(updatedTask);
+
 			allTasks();
+			setEditingTaskId(null);
+			closeModal();
 		} catch (error) {
-			console.log(error);
+			console.log("ERROR UPDATING TASK:", error);
 			toast.error("Something went wrong");
 		}
 	};
@@ -101,6 +107,8 @@ export const GlobalProvider = ({ children }) => {
 				allTasks,
 				collapsed,
 				collapseMenu,
+				setEditingTaskId,
+				editingTaskId,
 			}}
 		>
 			<GlobalUpdateContext.Provider value={{}}>
