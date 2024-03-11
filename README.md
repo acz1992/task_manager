@@ -1,3 +1,8 @@
+## ToDO
+
+fix bug that wont let me toggle completed or important on EditContent:
+relevant files are: globalProvider, route,ts, EditCOntent
+
 A responsive Task Manager App that allows me to list and track outstanding tasks, in order to better organise myself
 
 ## Mission

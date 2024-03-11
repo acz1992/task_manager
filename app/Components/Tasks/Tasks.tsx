@@ -1,19 +1,36 @@
 "use client";
 import { useGlobalState } from "@/app/context/globalProvider";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TaskItem from "../Task_Item/Task_Item";
 import { plus } from "../../utils/icons";
 import CreateContent from "../Modals/CreateContent";
 import Modal from "../Modals/Modal";
+import EditContent from "../Modals/EditContent";
+import { TaskProps } from "../../utils/customProps";
 
 interface Props {
 	title: string;
 	tasks: any[];
 }
 
+interface EditContentProps {
+	task: TaskProps;
+}
+
 function Tasks({ title, tasks }: Props) {
-	const { theme, isLoading, openModal, modal } = useGlobalState();
+	const {
+		theme,
+		isLoading,
+		openModal,
+		modal,
+		setEditingTaskId,
+		editingTaskId,
+	} = useGlobalState();
+
+	const editForm = (taskId: string) => {
+		setEditingTaskId(taskId);
+	};
 
 	return (
 		<TaskStyled theme={theme}>
@@ -21,16 +38,21 @@ function Tasks({ title, tasks }: Props) {
 			<h1>{title}</h1>
 
 			<div className="tasks grid">
-				{tasks.map((task) => (
-					<TaskItem
-						key={task.id}
-						title={task.title}
-						description={task.description}
-						date={task.date}
-						isCompleted={task.isCompleted}
-						id={task.id}
-					/>
-				))}
+				{tasks.map((task) =>
+					task.id === editingTaskId ? (
+						<Modal content={<EditContent {...task} />} />
+					) : (
+						<TaskItem
+							key={task.id}
+							title={task.title}
+							description={task.description}
+							date={task.date}
+							isCompleted={task.isCompleted}
+							id={task.id}
+							editForm={() => editForm(task.id)}
+						/>
+					)
+				)}
 				<button className="create-task" onClick={openModal}>
 					{plus}Add New Task
 				</button>
