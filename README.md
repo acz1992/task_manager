@@ -1,39 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A responsive Task Manager App that allows me to list and track outstanding tasks, in order to better organise myself
 
-04:29:05
-https://www.youtube.com/watch?v=kPKXmEp_wfU&ab_channel=TheCodeDealer
+## Mission
 
-## Getting Started
+-   While on the move I am aware of all the things I need to do, but once I am in a position to do them, I suddenly forget
+-   Wanted to be able to keep track of these tasks via a mobile app that could also be used in the browser
 
-First, run the development server:
+## Tools
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+TypeScript, Next.js 13, Styled Components, Tailwind
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Dependencies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+-   **Axios** - Library that simplifies sending asynchronous HTTP Requests to RESTful APIs and fetching data from servers
+-   **React Hot Toast** - Toast notification library that provides non-intrusive onscreen messages conveying information to user
+-   **Moment** - Popular JS package for handling dates and times
+-   **Next Top Loader** - Loading bar component
+-   **CSS Loaders** - Collection of loader animations
 
-## Learn More
+## To do:
 
-To learn more about Next.js, take a look at the following resources:
+### Edit Task
 
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   Add PUT method on backend and Edit Modal on frontend that allows user to update task
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Text overflow
 
-## Deploy on Vercel
+-   Maybe add scroll
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Change description to steps
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   Instead of having a description field, have multiple input fields under description property that describe different steps for Task.
+-   Requires investigating **nested documents/ arrays** in MongoDB and how to represent this in DataBAse Schema.
+-   Could also have a toggle method for each step that when clicks, crosses out particular step
+
+### Light and Dark mode
+
+-   Add light/ dark mode
