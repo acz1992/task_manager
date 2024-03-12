@@ -5,6 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useGlobalState } from "@/app/context/globalProvider";
 import { TaskProps } from "../../utils/customProps";
+import Modal from "./Modal";
 
 function EditContent(task: TaskProps) {
 	const [updateTitle, setUpdateTitle] = useState(task.title);
@@ -13,7 +14,6 @@ function EditContent(task: TaskProps) {
 	);
 	const [updateDate, setUpdateDate] = useState(task.date);
 	const [updateCompleted, setUpdateCompleted] = useState(task.isCompleted);
-	const [updateImportant, setUpdateImportant] = useState(task.isImportant);
 
 	const { theme, allTasks, updateTask, closeModal } = useGlobalState();
 	const handleChange = (name: string) => (e: any) => {
@@ -30,9 +30,6 @@ function EditContent(task: TaskProps) {
 			case "completed":
 				setUpdateCompleted(e.target.checked);
 				break;
-			case "important":
-				setUpdateImportant(e.target.checked);
-				break;
 			default:
 				break;
 		}
@@ -46,7 +43,6 @@ function EditContent(task: TaskProps) {
 			description: updateDescription,
 			date: updateDate,
 			isCompleted: updateCompleted,
-			isImportant: updateImportant,
 			id: task.id,
 		};
 
@@ -93,22 +89,11 @@ function EditContent(task: TaskProps) {
 				<label htmlFor="completed">Toggle Completed</label>
 				<input
 					value={updateCompleted.toString()}
-					/* checked={updateCompleted} */
+					checked={updateCompleted}
 					onChange={handleChange("completed")}
 					type="checkbox"
 					name="completed"
 					id="completed"
-				/>
-			</div>
-			<div className="input-control toggler">
-				<label htmlFor="important">Toggle Important</label>
-				<input
-					/* value={updateImportant.toString()} */
-					checked={updateImportant}
-					onChange={handleChange("important")}
-					type="checkbox"
-					name="important"
-					id="important"
 				/>
 			</div>
 			<div className="submit-btn flex justify-end">
