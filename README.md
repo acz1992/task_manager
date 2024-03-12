@@ -1,7 +1,4 @@
-## ToDO
-
-fix bug that wont let me toggle completed or important on EditContent:
-relevant files are: globalProvider, route,ts, EditCOntent
+# Task Manager
 
 A responsive Task Manager App that allows me to list and track outstanding tasks, in order to better organise myself
 
@@ -25,14 +22,6 @@ TypeScript, Next.js 13, Styled Components, Tailwind
 -   **CSS Loaders** - Collection of loader animations
 
 ## To do:
-
-### Edit Task
-
--   Add PUT method on backend and Edit Modal on frontend that allows user to update task
-
-### Text overflow
-
--   Maybe add scroll
 
 ### Change description to steps
 
