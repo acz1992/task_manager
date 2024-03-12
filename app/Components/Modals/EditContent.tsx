@@ -28,10 +28,10 @@ function EditContent(task: TaskProps) {
 				setUpdateDate(e.target.value);
 				break;
 			case "completed":
-				setUpdateCompleted(e.target.checked);
+				setUpdateCompleted(e.target.value);
 				break;
 			case "important":
-				setUpdateImportant(e.target.checked);
+				setUpdateImportant(e.target.value);
 				break;
 			default:
 				break;
@@ -45,8 +45,8 @@ function EditContent(task: TaskProps) {
 			title: updateTitle,
 			description: updateDescription,
 			date: updateDate,
-			completed: updateCompleted,
-			important: updateImportant,
+			isCompleted: updateCompleted,
+			isImportant: updateImportant,
 			id: task.id,
 		};
 
@@ -92,8 +92,8 @@ function EditContent(task: TaskProps) {
 			<div className="input-control toggler">
 				<label htmlFor="completed">Toggle Completed</label>
 				<input
-					/* value={updateCompleted.toString()} */
-					checked={updateCompleted}
+					value={updateCompleted.toString()}
+					/* checked={updateCompleted} */
 					onChange={handleChange("completed")}
 					type="checkbox"
 					name="completed"
