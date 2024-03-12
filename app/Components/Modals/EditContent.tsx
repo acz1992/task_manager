@@ -28,10 +28,10 @@ function EditContent(task: TaskProps) {
 				setUpdateDate(e.target.value);
 				break;
 			case "completed":
-				setUpdateCompleted(e.target.value);
+				setUpdateCompleted(e.target.checked);
 				break;
 			case "important":
-				setUpdateImportant(e.target.value);
+				setUpdateImportant(e.target.checked);
 				break;
 			default:
 				break;
