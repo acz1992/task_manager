@@ -28,31 +28,42 @@ function Tasks({ title, tasks }: Props) {
 		editingTaskId,
 	} = useGlobalState();
 
-	const editForm = (taskId: string) => {
+	/* const editForm = (taskId: string) => {
 		setEditingTaskId(taskId);
+	}; */
+
+	// Function to handle opening the edit modal
+	const openEditModal = (task: TaskProps) => {
+		setEditingTaskId(task.id);
+		openModal(); // Open the modal
 	};
 
 	return (
 		<TaskStyled theme={theme}>
 			{modal && <Modal content={<CreateContent />} />}
-			<h1>{title}</h1>
-
-			<div className="tasks grid">
-				{tasks.map((task) =>
-					task.id === editingTaskId ? (
-						<Modal content={<EditContent {...task} />} />
-					) : (
-						<TaskItem
-							key={task.id}
-							title={task.title}
-							description={task.description}
-							date={task.date}
-							isCompleted={task.isCompleted}
-							id={task.id}
-							editForm={() => editForm(task.id)}
+			{/* Render EditContent only if editingTaskId matches */}
+			{modal && editingTaskId && (
+				<Modal
+					content={
+						<EditContent
+							{...tasks.find((task) => task.id === editingTaskId)}
 						/>
-					)
-				)}
+					}
+				/>
+			)}
+			<h1>{title}</h1>
+			<div className="tasks grid">
+				{tasks.map((task) => (
+					<TaskItem
+						key={task.id}
+						title={task.title}
+						description={task.description}
+						date={task.date}
+						isCompleted={task.isCompleted}
+						id={task.id}
+						openEditModal={openEditModal} // Pass the openEditModal function
+					/>
+				))}
 				<button className="create-task" onClick={openModal}>
 					{plus}Add New Task
 				</button>

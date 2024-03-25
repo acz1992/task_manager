@@ -4,6 +4,7 @@ import { edit, trash } from "../../utils/icons";
 import styled from "styled-components";
 import { useGlobalState } from "@/app/context/globalProvider";
 import formatDate from "../../utils/formatDate";
+import { TaskProps } from "@/app/utils/customProps";
 
 interface Props {
 	title: string;
@@ -11,7 +12,14 @@ interface Props {
 	date: string;
 	isCompleted: boolean;
 	id: string;
-	editForm: () => void;
+	/* openEditModal: (task: {
+		id: string;
+		title: string;
+		description: string;
+		date: string;
+		isCompleted: boolean;
+	}) => void; */
+	openEditModal: (task: TaskProps) => void;
 }
 
 function TaskItem({
@@ -20,7 +28,7 @@ function TaskItem({
 	date,
 	isCompleted,
 	id,
-	editForm,
+	openEditModal,
 }: Props) {
 	const { theme, deleteTask, updateTask, openModal } = useGlobalState();
 	return (
@@ -56,7 +64,19 @@ function TaskItem({
 						Incomplete
 					</button>
 				)}
-				<button className="edit" onClick={editForm}>
+				{/* Call the openEditModal function with the task data */}
+				<button
+					className="edit"
+					onClick={() =>
+						openEditModal({
+							id,
+							title,
+							description,
+							date,
+							isCompleted,
+						})
+					}
+				>
 					{edit}
 				</button>
 				<button
