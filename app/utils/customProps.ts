@@ -5,5 +5,4 @@ export interface TaskProps {
 	isCompleted: boolean;
 	isImportant?: boolean;
 	id: string;
-	openEditModal: (task: TaskProps) => void;
 }

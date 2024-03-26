@@ -6,6 +6,15 @@ import { useGlobalState } from "@/app/context/globalProvider";
 import formatDate from "../../utils/formatDate";
 import { TaskProps } from "@/app/utils/customProps";
 
+interface Props {
+	title: string;
+	description: string;
+	date: string;
+	isCompleted: boolean;
+	id: string;
+	openEditModal: (task: TaskProps) => void;
+}
+
 function TaskItem({
 	title,
 	description,
@@ -13,7 +22,7 @@ function TaskItem({
 	isCompleted: initialIsCompleted,
 	id,
 	openEditModal,
-}: TaskProps) {
+}: Props) {
 	const { theme, deleteTask, updateTask, openModal } = useGlobalState();
 	const [isCompleted, setIsCompleted] = useState(initialIsCompleted);
 
