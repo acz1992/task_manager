@@ -26,9 +26,9 @@ TypeScript, Next.js 13, Styled Components, Tailwind
 
 ## To do:
 
-### Edit Task
+### Render Bug
 
--   Add PUT method on backend and Edit Modal on frontend that allows user to update task
+-   When isCompleted is toggled, page UI doesnt update to match change in state
 
 ### Text overflow
 
