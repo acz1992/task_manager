@@ -12,8 +12,8 @@ function EditContent(task: TaskProps) {
 		task.description
 	);
 	const [updateDate, setUpdateDate] = useState(task.date);
-	const [updateCompleted, setUpdateCompleted] = useState(task.isCompleted);
-	const [updateImportant, setUpdateImportant] = useState(task.isImportant);
+	/* 	const [updateCompleted, setUpdateCompleted] = useState(task.isCompleted);
+	const [updateImportant, setUpdateImportant] = useState(task.isImportant); */
 
 	const { theme, allTasks, updateTask, closeModal } = useGlobalState();
 	const handleChange = (name: string) => (e: any) => {
@@ -27,12 +27,12 @@ function EditContent(task: TaskProps) {
 			case "date":
 				setUpdateDate(e.target.value);
 				break;
-			case "completed":
+			/* case "completed":
 				setUpdateCompleted(e.target.checked);
 				break;
 			case "important":
 				setUpdateImportant(e.target.checked);
-				break;
+				break; */
 			default:
 				break;
 		}
@@ -45,15 +45,12 @@ function EditContent(task: TaskProps) {
 			title: updateTitle,
 			description: updateDescription,
 			date: updateDate,
-			completed: updateCompleted,
-			important: updateImportant,
+			/* completed: updateCompleted,
+			important: updateImportant, */
 			id: task.id,
 		};
 
 		updateTask(updatedTask);
-
-		/* closeModal(); */
-		/* console.log("Task Title:", task.title); */
 	};
 
 	return (
@@ -89,10 +86,10 @@ function EditContent(task: TaskProps) {
 					id="date"
 				/>
 			</div>
-			<div className="input-control toggler">
+			{/* <div className="input-control toggler">
 				<label htmlFor="completed">Toggle Completed</label>
 				<input
-					/* value={updateCompleted.toString()} */
+				
 					checked={updateCompleted}
 					onChange={handleChange("completed")}
 					type="checkbox"
@@ -103,14 +100,13 @@ function EditContent(task: TaskProps) {
 			<div className="input-control toggler">
 				<label htmlFor="important">Toggle Important</label>
 				<input
-					/* value={updateImportant.toString()} */
 					checked={updateImportant}
 					onChange={handleChange("important")}
 					type="checkbox"
 					name="important"
 					id="important"
 				/>
-			</div>
+			</div> */}
 			<div className="submit-btn flex justify-end">
 				<Button
 					type="submit"

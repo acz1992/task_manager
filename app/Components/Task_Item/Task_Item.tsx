@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { edit, trash } from "../../utils/icons";
 import styled from "styled-components";
 import { useGlobalState } from "@/app/context/globalProvider";
 import formatDate from "../../utils/formatDate";
+import { TaskProps } from "@/app/utils/customProps";
 
 interface Props {
 	title: string;
@@ -11,18 +12,30 @@ interface Props {
 	date: string;
 	isCompleted: boolean;
 	id: string;
-	editForm: () => void;
+	openEditModal: (task: TaskProps) => void;
 }
 
 function TaskItem({
 	title,
 	description,
 	date,
-	isCompleted,
+	isCompleted: initialIsCompleted,
 	id,
-	editForm,
+	openEditModal,
 }: Props) {
 	const { theme, deleteTask, updateTask, openModal } = useGlobalState();
+	const [isCompleted, setIsCompleted] = useState(initialIsCompleted);
+
+	const handleCompleteToggle = () => {
+		const updatedIsCompleted = !isCompleted;
+		const task = {
+			id,
+			isCompleted: updatedIsCompleted,
+		};
+		updateTask(task);
+		setIsCompleted(updatedIsCompleted);
+	};
+
 	return (
 		<TaskItemStyled theme={theme}>
 			<h1>{title}</h1>
@@ -32,31 +45,31 @@ function TaskItem({
 				{isCompleted ? (
 					<button
 						className="completed"
-						onClick={() => {
-							const task = {
-								id,
-								isCompleted: !isCompleted,
-							};
-							updateTask(task);
-						}}
+						onClick={handleCompleteToggle}
 					>
 						Completed
 					</button>
 				) : (
 					<button
 						className="incomplete"
-						onClick={() => {
-							const task = {
-								id,
-								isCompleted: !isCompleted,
-							};
-							updateTask(task);
-						}}
+						onClick={handleCompleteToggle}
 					>
 						Incomplete
 					</button>
 				)}
-				<button className="edit" onClick={editForm}>
+				{/* Call the openEditModal function with the task data */}
+				<button
+					className="edit"
+					onClick={() =>
+						openEditModal({
+							id,
+							title,
+							description,
+							date,
+							isCompleted,
+						})
+					}
+				>
 					{edit}
 				</button>
 				<button
