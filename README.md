@@ -11,8 +11,6 @@ While on the move and occupied, I often remember all of the tasks I need to comp
 
 This project uses Next 13, TypeScript, MongoDB and Prisma.
 
-### Dependencies Used
-
 ### Resources
 
 -   **Clerk/NextJS**: Seamlessly integrates authentication and user management into Next.js applications.
