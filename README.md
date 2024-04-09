@@ -2,7 +2,7 @@
 
 ## About
 
-## The Mission
+### The Mission
 While on the move and occupied, I often remember all of the tasks I need to complete. However, as soon as I am in a position to address them, I forget them. Therefore, I wanted to be able to keep track of all of these tasks, define by importance, and be able to use this app on both my phone and laptop.
 
 ## Tech / Resources
